@@ -1,1 +1,103 @@
-/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300&display=swap');
+// Define a custom typography config that overrides the font-family as well as the
+// `headlines` and `body-1` levels.
+$custom-typography: mat-typography-config(
+  $font-family: 'Montserrat, sans-serif',
+  $headline: mat-typography-level(32px, 48px, 700),
+  $body-1: mat-typography-level(16px, 24px, 400)
+);
+// Override typography CSS classes (e.g., mat-h1, mat-display-1, mat-typography, etc.).
+@include mat-base-typography($custom-typography);
+
+// Override typography for a specific Angular Material components.
+@include mat-checkbox-typography($custom-typography);
+
+// Override typography for all Angular Material, including mat-base-typography and all components.
+@include angular-material-typography($custom-typography);
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core($custom-typography);
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$outsourcerz-app-primary: mat-palette($mat-light-blue, A700);
+$outsourcerz-app-accent:  mat-palette($mat-lime, A700);
+
+// The warn palette is optional (defaults to red).
+$outsourcerz-app-warn:    mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$outsourcerz-app-theme: mat-light-theme($outsourcerz-app-primary, $outsourcerz-app-accent, $outsourcerz-app-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($outsourcerz-app-theme);
+
+body {
+    margin: 0;
+    padding: 0;
+    clear: both;
+    background-color: #fefefe;
+}
+
+.container {
+    max-width: 1100px;
+}
+
+.content {
+    height: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+[layout-wrap] {
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.background-primary {
+    background-color: mat-color($outsourcerz-app-primary);
+}
+
+.background-accent {
+    background-color: mat-color($outsourcerz-app-accent);
+}
+
+.background-warn {
+    background-color: mat-color($outsourcerz-app-warn);
+}
+
+.fill-primary {
+    color: mat-color($outsourcerz-app-primary);
+}
+
+.fill-accent {
+    color: mat-color($outsourcerz-app-accent);
+}
+
+.fill-warn {
+    color: mat-color($outsourcerz-app-warn);
+}
+
+.stuff-primary {
+    background-color: mat-color($outsourcerz-app-primary);
+    color: aliceblue !important;
+}
+
+.stuff-accent {
+    background-color: mat-color($outsourcerz-app-accent);
+    color: aliceblue !important;
+}
+
+.stuff-warn {
+    background-color: mat-color($outsourcerz-app-warn);
+    color: aliceblue !important;
+}
